@@ -3,80 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyzing Public Opinion and Political Spectrums in China across Multiple Social Media Platforms</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Public Opinion and Political Spectrums Analysis in China</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Bootstrap JS, Popper.js, and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-            <a class="navbar-brand" href="#"><strong><i>Public Opinion and Political Spectrums Analysis in China</i></strong></a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="methodology.html">Methodology</a></li>
-                    <li class="nav-item"><a class="nav-link" href="topics.html">Hot Topics</a></li>
-                    <li class="nav-item"><a class="nav-link" href="conclusion.html">Conclusion</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                </ul>
-            </div>
-        </nav>
+        <div class="navigation">
+            <a href="#">Home</a>
+            <a href="#">Methodology</a>
+            <a href="#">Analysis</a>
+            <a href="#">Conclusions</a>
+            <a href="#">About</a>
+        </div>
+        <div class="search">
+            <input type="text" placeholder="Search">
+        </div>
     </header>
-    <main class="container mt-4">
-        <div class="search-bar mb-4">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search...">
-            <ul id="searchResults" class="search-results"></ul>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <section class="my-5">
-                    <h2>Introduction</h2>
-                    <p>This project, in simple terms, is about using math, statistics, and a bunch of NLP tools to extract and analyze the public opinion from posts on different topics across multiple social media platforms (In the present, we focus on Zhihu, which is Chinese Quora.).</p>
-                    <p>Afterwards, the result would be used to compare with the government’s narratives (by analyzing the government internal references, public documents and news from state owned media and press). </p>
-                    <p>We intend to pinpoint the public opinion spectrum, as well as identify the gap between the public opinion and the government’s perspective, and more importantly, what constitutes the formation of the gap.</p>
-                </section>
+    <main>
+        <section class="hero">
+            <h1><i>Public Opinion and Political Spectrums Analysis in China</i></h1>
+            <h2>I. Project Introduction</h2>
+            <p>This project aims to employ mathematical and statistical methodologies, alongside an array of natural language processing (NLP) tools, to extract and analyze public opinion on various topics across multiple social media platforms, with a current focus on <strong><a href="https://www.zhihu.com/">Zhihu</a></strong>, the Chinese equivalent of Quora.</p>
+            <p>Subsequently, the results will be compared with government narratives by analyzing internal government references, public documents, and news from state-owned media and press. </p>
+            <p>The primary objectives are to delineate the spectrum of public opinion, identify discrepancies between public sentiment and the government’s perspective, and, crucially, to understand the underlying factors contributing to these discrepancies.</p>
+            <div class="img-container">
+                <img src="img/1.jpg" alt="pic1" class="pic">
+                <img src="img/2.jpg" alt="pic2" class="pic">
+                <img src="img/3.jpg" alt="pic3" class="pic">
+                <img src="img/4.jpg" alt="pic4" class="pic">
+                <img src="img/5.jpg" alt="pic5" class="pic">
+                <img src="img/6.jpg" alt="pic6" class="pic">
+                <img src="img/7.jpg" alt="pic7" class="pic">
             </div>
-            <div class="col-md-6">
-                <section class="my-5">
-                    <h2>Project Objectives</h2>
-                    <p>To Understand Public Opinions in China</p>
-                    <p>To find the Gap between Public Sentiment and Government Narratives</p>
-                    <p>And to further analyze the mechanism of this gap:</p>
-                    <ol>
-                        <li>Is it that the government is incapable of understanding the public needs, or is this gap between public opinion and government narrative intentionally neglected the public sentiment?</li>
-                        <li>And if it is intentional, does this intentional behavior actually show the priorities of the government, or potential concerns.</li>
-                    </ol>
-                </section>
-            </div>
-        </div>
-        <section class="my-5">
-            <h2>Major Information Source</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="img/pic1.png" class="img-fluid" alt="wordCloud Logo">
-                </div>
-            </div>
-            <ul class="list-unstyled mt-3">
-                <li><a href="https://www.zhihu.com/" target="_blank">Zhihu</a></li>
-                <li><a href="https://weibo.com/" target="_blank">Weibo</a></li>
-                <li><a href="https://github.com/JesseLovesGrace/CN_spectrum" target="_blank">Research Materials</a></li>
-            </ul>
         </section>
+        <section class="content">
+            <h2>II. Project Objectives and Questions</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Project Objectives</th>
+                            <th>Project Questions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>To comprehend the spectrum of public opinions in China</td>
+                            <td>Is the disparity between public opinion and government narrative a result of the government’s inability to accurately understand public needs?</td>
+                        </tr>
+                        <tr>
+                            <td>To identify the discrepancy between public sentiment and official government narratives.</td>
+                            <td>Is this disparity a consequence of the government's deliberate neglect of public sentiment?</td>
+                        </tr>
+                        <tr>
+                            <td>To investigate the underlying mechanisms contributing to this discrepancy.</td>
+                            <td>If the neglect is intentional, does it reflect the government's priorities or reveal underlying concerns?</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            
+        
     </main>
     <footer>
-        <div class="container">
-            <p>&copy; 2024 Fengdi Huang & Zhen Pan. All rights reserved.</p>    
-        </div>
+        <p>&copy; Fengdi Huang and Zhen Pan CoProject. All Rights Reserved.</p>
+        <a href="#">Back to Top</a>
     </footer>
-    <button id="backToTop" class="back-to-top">Back to Top</button>
+   
 </body>
 </html>

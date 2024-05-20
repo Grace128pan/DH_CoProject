@@ -1,44 +1,54 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const searchInput = document.getElementById('searchInput');
-    const searchResults = document.getElementById('searchResults');
-    const navItems = document.querySelectorAll('.navbar-nav .nav-item');
-    const backToTopButton = document.getElementById('backToTop');
+const searchInput = document.querySelector('.search input');
+const navigation = document.querySelector('.navigation');
 
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase().trim();
-        searchResults.innerHTML = '';
+searchInput.addEventListener('keyup', (event) => {
+  const searchTerm = event.target.value.toLowerCase();
+  const navigationLinks = navigation.querySelectorAll('a');
+  let resultsFound = false;
 
-        if (query) {
-            navItems.forEach(item => {
-                const text = item.textContent.toLowerCase();
-                if (text.includes(query)) {
-                    const listItem = document.createElement('li');
-                    const link = document.createElement('a');
-                    link.href = item.querySelector('a').href;
-                    link.textContent = item.textContent;
-                    listItem.appendChild(link);
-                    searchResults.appendChild(listItem);
-                }
-            });
-        }
+  navigationLinks.forEach(link => {
+    const linkText = link.textContent.toLowerCase();
 
-        searchResults.style.display = searchResults.innerHTML ? 'block' : 'none';
-    });
+    if (linkText.includes(searchTerm)) {
+      link.style.display = 'block';
+      resultsFound = true;
+    } else {
+      link.style.display = 'none';
+    }
+  });
 
-    // Show or hide the "Back to Top" button
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopButton.style.display = 'block';
-        } else {
-            backToTopButton.style.display = 'none';
-        }
-    });
-
-    // Scroll to top when the button is clicked
-    backToTopButton.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
+  if (!resultsFound) {
+    const noResults = document.createElement('p');
+    noResults.textContent = 'No Results Found';
+    noResults.classList.add('no-results');
+    navigation.appendChild(noResults);
+  } else {
+    const noResults = document.querySelector('.no-results');
+    if (noResults) {
+      noResults.remove();
+    }
+  }
 });
+
+const images = document.querySelectorAll('.img-container img');
+let currentIndex = 0;
+
+function updateImages() {
+    images.forEach((img, index) => {
+        img.classList.remove('previous', 'active', 'next');
+        if (index === currentIndex) {
+            img.classList.add('active');
+        } else if (index === (currentIndex + 1) % images.length) {
+            img.classList.add('next');
+        } else {
+            img.classList.add('previous');
+        }
+    });
+    currentIndex = (currentIndex + 1) % images.length;
+}
+
+window.addEventListener('load', () => {
+    updateImages();
+    setInterval(updateImages, 5000); // Change image every 5 seconds
+});
+
