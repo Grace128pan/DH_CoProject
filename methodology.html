@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Methodology</title>
+    <link rel="stylesheet" href="methodology.css">
+</head>
+<body>
+    <header>
+        <img src="img/freedom.jpg" alt="freedom" id="freedom">
+        <h1>III. Methodology</h1>
+    </header>
+    <main>
+        <p class="method">Our research aims to implement a variety of tools to gather extensive information across multiple topics and platforms. This collected data will then be analyzed and categorized based on opinion and sentiment. Ultimately, we will evaluate the findings and synthesize a comprehensive conclusion.</p>
+        <nav>
+            <h2>Our methodology is based on the following steps:</h2>
+            <ul class="box-container">
+                <li>Data Collection and Preprocessing</li>
+                <li>Document-Level Analysis</li>
+                <li>Aspect-Based Sentiment Analysis </li>
+                <li>Validation and Interpretation</li>
+            </ul>
+        </nav>
+        <div class="container">
+            <section class="section">
+              <h3>Data Collection and Preprocessing</h3>
+              <p class="dataset">The dataset comprises various attributes extracted from social media platforms, mainly Zhihu, encompassing the author's profile name, profile description, homepage URL, gender, timestamp of the post, follower count, number of comments, likes, thumbs-ups, and the content posted. To collect and preprocess this data, Python programming and ChatGPT algorithms are commonly employed. These technologies facilitate web scraping for data retrieval and subsequent preprocessing tasks to refine and structure the collected information for analytical purposes.</p>
+              <img src="img/dataset.jpg" alt="Image 1" id="img1">
+             
+            </section>
+            <section class="section">
+                <h3>Document-level Analysis(1)</h3>
+                <p class="dataset">The research employs a multifaceted approach incorporating several methodologies to facilitate comprehensive analysis. Firstly, <strong>sentiment analysis</strong> techniques are utilized to discern the prevailing sentiments expressed within the collected data.</p>
+                <p class="dataset">Following this, <strong>Latent Dirichlet Allocation (LDA) clustering</strong> techniques are employed, leveraging both Term Frequency-Inverse Document Frequency (TF-IDF) and Document-Term Matrix (DTM) representations. This facilitates the identification and grouping of related documents into coherent clusters, thereby revealing underlying themes and topics.</p> 
+              <a href="Lay_Flat_lda_visualization.html#topic=0&lambda=1&term="><img src="img/ida.jpg" alt="Image 2" id="img2"></a>
+           
+            </section>
+            <section class="section">
+              <h3>Document-level Analysis(2)</h3>
+              <p class="dataset">Additionally, <strong>Principal Component Analysis (PCA)</strong> visualization techniques are employed to provide insightful visual representations of the data, aiding in the exploration and interpretation of complex relationships. </p>
+                <p class="dataset">Furthermore, the research integrates <strong>aspect-based analysis </strong>methodologies to delve deeper into the specific components and facets of the data, enabling a nuanced understanding of opinions and sentiments pertaining to distinct aspects. </p>
+              <img src="img/aspect.jpg" alt="Image 3" id="img3">
+            </section>
+            <section class="section">
+              <h3>Validation and Interpretation</h3>
+              <p class="dataset">We engage in manual scrutiny of a diverse array of posts across various clusters is imperative to gain a nuanced comprehension of the prevailing dynamics within each cluster. This methodological approach ensures the acquisition of comprehensive insights, enabling the formulation of interpretations that are substantively grounded in the data. By meticulously examining individual posts within distinct clusters, researchers can discern intricate patterns, thematic variations, and emergent trends, thereby facilitating a rigorous and informed analysis of the dataset.</p>
+              <img src="img/death.jpg" alt="Image 4" id="img4">
+              <h4>Code Example</h4>
+              <pre>
+                <code id="code">
+          def tokenize_and_remove_stopwords(text):
+              # Tokenize the text using Jieba
+              tokens = jieba.lcut(text)
+              # Remove punctuation marks using regular expression
+              tokens = [re.sub(r'[^\w\s]', '', token) for token in tokens]
+              # Remove stop words
+              tokens = [token for token in tokens if token.strip() and token not in stop_words]
+              return tokens
+          
+          # Drop rows with missing values in the '回答内容' column
+          df.dropna(subset=['回答内容'], inplace=True)
+          
+          # Tokenize the text, remove punctuation marks, and stop words
+          df['tokenized_content'] = df['回答内容'].apply(tokenize_and_remove_stopwords)
+          
+          # Display the tokenized content
+          print(df['tokenized_content'].head())
+              </code>
+            </pre>
+              
+            </section>
+          </div>
+    </main>
+    <footer>
+      <p><strong>&copy; Fengdi Huang and Zhen Pan CoProject. All Rights Reserved.</strong></p>
+      <a href="#"><strong>Back to Top</strong></a>
+      </footer>
+</body>
+</html>
