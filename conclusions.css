@@ -1,16 +1,46 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    font-family: Times, sans-serif;
 }
 
 header {
-    background-color: #333;
-    color: #fff;
-    padding: 20px 0;
+    position: relative;
+    z-index: 10; /* Ensures the header is always in front */
+    width: 100%;
     text-align: center;
+    background-color:cadetblue;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    margin: 0;
+}
+
+.img-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 800px; /* Adjust as needed */
+    margin: 0 auto; /* Centers the image container */
+}
+
+.img-container img {
+    max-width: 45%; /* Ensure images don't overflow container */
+    height: auto;
+}
+
+#img1 {
+    margin-right: auto; /* Pushes img1 to the left */
+    border-radius: 10px;
+}
+
+#img2 {
+    margin-left: auto; /* Pushes img2 to the right */
+    border-radius: 10px;
 }
 
 main {
@@ -34,17 +64,19 @@ h2 {
 
 .conclusions p, .references ul {
     margin-bottom: 20px;
+    text-align: justify;
 }
 
 .references ul {
     list-style: none;
     padding-left: 0;
+    padding-bottom: 60px;
 }
 
 .references ul li {
-    background: url('bullet.png') no-repeat left center;
     padding-left: 20px;
     margin-bottom: 10px;
+    text-align: justify;
 }
 
 footer {
@@ -57,3 +89,25 @@ footer {
     bottom: 0;
 }
 
+/* Media queries */
+@media only screen and (max-width: 768px) {
+    main {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .img-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #img1, #img2 {
+        margin: 10px 0;
+    }
+}
