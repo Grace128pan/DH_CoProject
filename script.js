@@ -52,3 +52,14 @@ window.addEventListener('load', () => {
     setInterval(updateImages, 5000); // Change image every 5 seconds
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  // Always show the cookie consent modal
+  document.getElementById('cookie-consent-modal').style.display = 'block';
+
+  // Handle the consent button click
+  document.getElementById('consent-button').addEventListener('click', function() {
+      // Hide the modal when the consent button is clicked
+      document.getElementById('cookie-consent-modal').style.display = 'none';
+  });
+});
+
