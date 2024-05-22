@@ -1,7 +1,7 @@
 /* styles.css */
 body {
     font-family: Times, Arial, sans-serif;
-    margin: 0;
+    margin: 20px;
 }
 
 .header-text {
@@ -26,6 +26,7 @@ body {
     max-width: 100%;
     width: 1280px; /* Set a larger width for a more comfortable viewing size */
     height: auto;
+    border-radius: 10px;
 }
 
 #video-embed {
@@ -34,6 +35,7 @@ body {
     position: relative;
     padding-bottom: 56.23%;
     height: 0;
+    border-radius: 10px;
 }
 
 .text-container {
@@ -50,8 +52,12 @@ body {
     margin-bottom: 10px;
     cursor: pointer; /* Add pointer cursor to indicate clickable element */
     text-align: center;
+    color:cadetblue;
+    transition: color 0.3s ease;
 }
-
+.text-container h1:hover {
+    color:darkblue;
+}
 .hidden {
     display: none;
 }
@@ -61,6 +67,7 @@ body {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
+    border-radius: 10px;
 }
 
 #video-embed iframe {
@@ -70,6 +77,7 @@ body {
     left: 0;
     top: 0;
     border: none;
+    border-radius: 10px;
 }
 
 
@@ -86,6 +94,17 @@ body {
     padding: 10px;
     border: 1px solid #ddd;
     margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), /* Outer shadow */
+    inset 0 2px 4px rgba(255, 255, 255, 0.5); /* Inner shadow */
+    background: linear-gradient(145deg, #ffffff, #f0f0f0); /* Light gradient for 3D effect */
+    transition: transform 0.2s ease; /* Smooth transition for hover effect */
+    margin: 10px;
+}
+
+.content-left:hover,
+.content-right:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
 }
 
 .content-left img {
@@ -93,6 +112,9 @@ body {
     height: auto; /* Maintain aspect ratio */
     max-width: 300px; /* Set a maximum width if needed */
     /* Additional styles can be added as needed */
+    border-radius: 10px;
+    align-items: center;
+    margin: 10px;
 }
 
 .content h2 {
@@ -100,6 +122,25 @@ body {
     padding-bottom: 5px;
     text-align: center;
 }
+.download-banner {
+    background-color: cadetblue; /* Change to your desired background color */
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.download-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.download-link:hover {
+    text-decoration: underline;
+}
+
 
 footer {
     background-color: cadetblue;
@@ -133,12 +174,25 @@ footer a:hover {
     .header-text {
         height: auto; /* Adjust height for smaller screens */
         font-size: 16px; /* Decrease font size for readability */
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .media-container {
+        flex: 1;
+        margin-right: 20px;
+        margin-bottom: 0;
     }
 
     .text-container {
         margin-left: 20px; /* Adjust margin for smaller screens */
+        flex: 2;
     }
-
+    
+    .text-container h1 {
+        text-align: left;
+    }
     .content {
         flex-direction: column; /* Stack content vertically on smaller screens */
     }
@@ -162,5 +216,15 @@ footer a:hover {
 
     .text-container {
         margin-left: 10px; /* Further adjust margin for smaller screens */
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-text {
+        padding: 40px;
+    }
+
+    .media-container {
+        margin-right: 40px;
     }
 }

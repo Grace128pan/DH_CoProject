@@ -10,12 +10,18 @@ header {
     background-color:cadetblue;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 h1 {
     margin-bottom: 0;
+}
+
+#firewall {
+    border-radius: 50%;
+    height: 60%;
+    width: 50%;
 }
 
 .gallery {

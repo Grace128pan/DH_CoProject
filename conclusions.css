@@ -41,6 +41,7 @@ h1 {
 #img2 {
     margin-left: auto; /* Pushes img2 to the right */
     border-radius: 10px;
+    width: 2000px;
 }
 
 main {

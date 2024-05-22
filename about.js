@@ -38,3 +38,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+document.querySelector('.download-link').addEventListener('click', function() {
+    // Your tracking or additional code here
+    console.log('Download link clicked');
+});
