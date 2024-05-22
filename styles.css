@@ -8,13 +8,13 @@ header {
     background-color:cadetblue;
     padding: 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
 }
 
 .navigation {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     font-weight: bold;
     font-size: 18px;
 }
