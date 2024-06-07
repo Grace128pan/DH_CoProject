@@ -7,7 +7,8 @@
     <!--leaflet css and js-->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
-    <script src="data/point.js" defer></script>
+    <script src="data/point2.js" defer></script>
+    <script src="data/polygon2.js" defer></script>
     <style>
         html, body {
             height: 100%;
@@ -36,16 +37,25 @@
             background: transparent;
         }
 
+        .leaflet-popup-content-wrapper {
+            background-color: aqua;
+            color:rgb(15, 15, 15);
+            font-family: 'Times New Roman', Times, serif;
+            border: 1px solid #c0c0c0;
+        }
     </style>
 </head>
 <body>
-    <div id="map"></div>
+    <div id="map">
+        <div class="leaftlet-control coordinates"></div> 
+    </div>
     <script>
         //we should add DOMcontentloaded method to make the map visible
         document.addEventListener('DOMContentLoaded', function () {
             //map initialization
             var map = L.map('map').setView([35.8617, 104.1954], 4);
-
+            
+            /*layer and wms*/
             //osm layer
             var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
                 attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -83,6 +93,13 @@
                 subdomains:['mt0','mt1','mt2','mt3']
             });
             //googleSat.addTo(map);
+
+            var nexrad = L.tileLayer.wms("http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi", {
+                layers: 'nexrad-n0r-900913',
+                format: 'image/png',
+                transparent: true,
+                attribution: "Weather data © 2012 IEM Nexrad"
+            });
 
             // add marker and icon
             var markerIcon = L.divIcon({
@@ -142,35 +159,69 @@
 
             //console.log(L.geoJSON(mainMarker.toGeoJSON()));
 
+            //geojson data
+            var polygonData = L.geoJson(polygonJson, {
+                onEachFeature: function(feature, layer) {
+                   layer.bindPopup(`<b>Name: </b>` + feature.properties.name) 
+                },
+                style: {
+                    fillColor: "red",
+                    fillOpacity: 1,
+                   // stroke: "#c0c0c0"
+                    color: "#c0c0c0"
+                }
+
+            }).addTo(map);
+
+            var pointData = L.geoJson(pointJson, {
+                onEachFeature: function(feature, layer) {
+                    // Check if the feature has the desired properties
+                    if (feature.properties && feature.properties.name && feature.properties.capital && feature.properties.politics && feature.properties.economics) {
+                        // Create the popup content
+                        var popupContent ="<b>Name:</b> " + feature.properties.name +"<br><b>Capital:</b> " + feature.properties.capital + "<br><b>Politics:</b> " + feature.properties.politics + "<br><b>Economics:</b> " + feature.properties.economics;
+                        // Bind the popup to the layer
+                        layer.bindPopup(popupContent);
+                    }/*,
+                    style : {
+                        fillColor: "red",
+                        fillOpacity: 1,
+                        stroke: "#c0c0c0",
+                    }*/
+                }
+            }).addTo(map);
+
+      
+
             //layer control
             var baseMaps = {
                 "OSM": osm,
                 "Water Color": waterColor,
                 "Green Map": greenMap,
                 "Google Hybrid": googleHybrid,
-                "Google Satellite": googleSat
+                "Google Satellite": googleSat,
             };
 
             var overlayMaps = {
                 "Marker 1": mainMarker1,
                 "Marker 2": mainMarker2,
-                "Marker 3": mainMarker3
+                "Marker 3": mainMarker3,
+                "Polygon Data": polygonData,
+                "Point Data": pointData,
+                "Nexrad": nexrad  //geoserver for futher digging
             };
 
-            L.control.layers(baseMaps, overlayMaps).addTo(map);
+            L.control.layers(baseMaps, overlayMaps).addTo(map);  
+            /*=======
+            leaflet events
+            ===========*/      
+            map.on('click', function(e) {
+                alert("You clicked the map at " + e.latlng);
+            });
 
-            //geojson data
-            L.geoJson(pointJson, {
-                onEachFeature: function(feature, layer) {
-                    // Check if the feature has the desired properties
-                    if (feature.properties && feature.properties.politics && feature.properties.economics) {
-                        // Create the popup content
-                        var popupContent = "<b>Politics:</b> " + feature.properties.politics + "<br><b>Economics:</b> " + feature.properties.economics;
-                        // Bind the popup to the layer
-                        layer.bindPopup(popupContent);
-                    }
-                }
-            }).addTo(map);
+             /*=======
+            leaflet style customization
+            ===========*/ 
+
 
         });
         
