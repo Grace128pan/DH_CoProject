@@ -63,6 +63,34 @@ h2 {
     margin-bottom: 20px;
 }
 
+.conclusions {
+    margin-top: 20px;
+}
+.conclusions h2 {
+    font-size: 24px;
+}
+.conclusions p {
+    font-size: 16px;
+}
+.conclusions table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.conclusions th, .conclusions td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: justify;
+}
+.conclusions th {
+    background-color: #918c8c;
+    text-align: center;
+}
+.content {
+    display: none;
+    margin-top: 10px;
+    text-align: justify;
+}
+
 .conclusions p, .references ul {
     margin-bottom: 20px;
     text-align: justify;
