@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
     <script src="data/point2.js" defer></script>
-    <script src="data/polygon2.js" defer></script>
+    <script src="data/polygon3.js" defer></script>  
     <style>
         html, body {
             height: 100%;
@@ -64,22 +64,18 @@
            // osm.addTo(map);
 
             //water color -tile layer provider
-            var waterColor = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.{ext}', {
-                minZoom: 0,
+            var googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
                 maxZoom: 20,
-                attribution: '&copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                ext: 'png'
+                subdomains:['mt0','mt1','mt2','mt3']
             });
            // waterColor.addTo(map);
 
             //green map
-            var greenMap = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.{ext}', {
-                minZoom: 0,
+            var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
                 maxZoom: 20,
-                attribution: '&copy; CNES, Distribution Airbus DS, © Airbus DS, © PlanetObserver (Contains Copernicus Data) | &copy; <a href="https://www.stadiamaps.com/" target="_blank">Stadia Maps</a> &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-                ext: 'jpg'
+                subdomains:['mt0','mt1','mt2','mt3']
             });
-            greenMap.addTo(map);
+            googleTerrain.addTo(map);
 
             //google street map- google map leaflet
             var googleHybrid = L.tileLayer('http://{s}.google.com/vt?lyrs=s,h&x={x}&y={y}&z={z}',{
@@ -162,8 +158,32 @@
             //geojson data
             var polygonData = L.geoJson(polygonJson, {
                 onEachFeature: function(feature, layer) {
-                   layer.bindPopup(`<b>Name: </b>` + feature.properties.name) 
-                },
+                    var provinceName = feature.properties.name;
+                    var wikipediaLink = `https://en.wikipedia.org/wiki/${provinceName}`;
+                    var popupContent = `
+                    <b>Name:</b> <a href="${wikipediaLink}" target="_blank">${provinceName}</a><br>
+                    <b>Area:</b> ${feature.properties.area}<br>
+                    <b>Population:</b> ${feature.properties.population}<br>
+                    <b>Capital:</b> ${feature.properties.capital}<br>
+                    <b>Main Industry:</b> ${feature.properties["main industry"]}<br>
+                    <b>GDP:</b> ${feature.properties.GDP}<br>
+                    <b>GDP per Capita:</b> ${feature.properties["GDP per capita"]}<br>
+                    <b>Political Spectrum:</b> ${feature.properties["political spectrum"]}
+                `;
+               layer.bindPopup(popupContent); 
+                   layer.on({
+                    mouseover: function(e) {
+                        var layer = e.target;
+                        layer.setStyle({
+                            fillColor: 'yellow',
+                            fillOpacity: 0.7
+                        });
+                    },
+                    mouseout: function(e) {
+                        polygonData.resetStyle(e.target);
+                    }
+                });
+             },
                 style: {
                     fillColor: "red",
                     fillOpacity: 1,
@@ -195,8 +215,8 @@
             //layer control
             var baseMaps = {
                 "OSM": osm,
-                "Water Color": waterColor,
-                "Green Map": greenMap,
+                "Google Streets": googleStreets,
+                "Google Terrain": googleTerrain,
                 "Google Hybrid": googleHybrid,
                 "Google Satellite": googleSat,
             };
