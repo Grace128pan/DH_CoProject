@@ -35,14 +35,25 @@
             width: 28px;
             height: 28px;
             background: transparent;
+            transition: transform 0.3s ease;
         }
 
+        .transparent-icon img:hover {
+            transform: scale(1.5);
+        }
+        
         .leaflet-popup-content-wrapper {
             background-color: aqua;
             color:rgb(15, 15, 15);
             font-family: 'Times New Roman', Times, serif;
             border: 1px solid #c0c0c0;
         }
+
+        .hover-effect:hover {
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
     </style>
 </head>
 <body>
@@ -121,7 +132,7 @@
             //define popup content for each marker
             var popupContent1 = `
                 <b>China</b><br>
-                <a href="index.html"><img src="img/ccp.jpg" alt="CCP Image" width="100"></a><br>
+                <a href="index.html"><img src="img/ccp.jpg" alt="CCP Image" width="100" style="box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border-radius: 10px;" class="hover-effect"></a><br>
                 <b>Population:</b> 1.4 billion<br>
                 <b>Party:</b> Chinese Communist Party<br>
                 <b>Social Media:</b> ZhiHu<br>
@@ -129,7 +140,7 @@
             `;
             var popupContent2 = `
             <b>China</b><br>
-            <a href="index.html"><img src="img/ccp.jpg" alt="CCP Image" width="100"></a><br>
+            <a href="index.html"><img src="img/ccp.jpg" alt="CCP Image" width="100" style="box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border-radius: 10px;" class="hover-effect"></a><br>
             <b>Population:</b> 1.4 billion<br>
             <b>Party:</b> Chinese Communist Party<br>
             <b>Social Media:</b> ZhiHu<br>
@@ -137,7 +148,7 @@
         `;
             var popupContent3 = `
             <b>China</b><br>
-            <a href="index.html"><img src="img/ccp.jpg" alt="CCP Image" width="100"></a><br>
+            <a href="index.html"><img src="img/ccp.jpg" alt="CCP Image" width="100" style="box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); border-radius: 10px;" class="hover-effect"></a><br>
             <b>Population:</b> 1.4 billion<br>
             <b>Party:</b> Chinese Communist Party<br>
             <b>Social Media:</b> ZhiHu<br>
