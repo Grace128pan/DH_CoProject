@@ -22,6 +22,21 @@ h1 {
     border-radius: 50%;
     height: 60%;
     width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#baby-lda {
+    border-radius: 8px;
+    height: 60%;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#firewall:hover, #baby-lda:hover {
+    transform: scale(1.2);
+    box-shadow: 0 8px 16px rgba(131, 56, 56, 0.4);
 }
 
 .gallery {
@@ -55,12 +70,14 @@ h1 {
     width: 24%;
     object-fit: cover;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border-radius: 8px;
 }
 
 .gallery-image:hover {
-    transform: scale(1.1);
+    transform: scale(1.2);
+    box-shadow: 0 8px 16px rgba(131, 61, 61, 0.4);
 }
 
 .guide {

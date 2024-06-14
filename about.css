@@ -27,6 +27,13 @@ body {
     width: 1280px; /* Set a larger width for a more comfortable viewing size */
     height: auto;
     border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#thumbnail:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(141, 56, 56, 0.4);
 }
 
 #video-embed {

@@ -15,6 +15,13 @@ body {
   #freedom {
     width: 160px;
     height: auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#freedom:hover {
+  transform: scale(1.2);
+  box-shadow: 0 8px 16px rgba(128, 65, 65, 0.4);
 }
 
   h1 {
@@ -106,6 +113,17 @@ nav ul li {
     border-radius: 5px;
     height: auto;
   }
+
+  #img2 {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#img2:hover {
+    transform: scale(1.3);
+    box-shadow: 0 8px 16px rgba(185, 92, 92, 0.4);
+}
 
   #img4 {
     width: auto;
